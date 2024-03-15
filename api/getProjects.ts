@@ -19,11 +19,19 @@ export async function getProjects(): Promise<Project[]> { // Added Promise<Proje
     `query GetProjects {
       projects {
         id
+        slug
         name
         description
         features {
           id
           name
+        }
+        images {
+          id
+          title
+          image {
+            url
+          }
         }
       }
     }`
