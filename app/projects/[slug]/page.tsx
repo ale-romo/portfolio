@@ -24,9 +24,9 @@ const ProjectPage = ({ params }: Props) => {
 
   const {  slug } = params;
 
-  return (<Project slug={slug} />
-
-  );
+  return <main className="flex flex-col md:flex-row h-screen p-5">
+    <Project slug={slug} />
+  </main>;
 };
 
 export default ProjectPage;

@@ -7,6 +7,7 @@ interface Feature {
 interface Image {
   id: string;
   title: string;
+  description: string;
   image: {
     url: string;
   }
@@ -65,6 +66,7 @@ export async function getProjectBySlug(slug: string): Promise<Project[] | null> 
         images {
           id
           title
+          description
           image {
             url
           }

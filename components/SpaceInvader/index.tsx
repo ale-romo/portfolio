@@ -36,7 +36,7 @@ const SpaceInvader: React.FC<SpaceInvaderProps> = ({ size, color }) => {
     drawInvader();
   }, [canvasRef, invaderColor, invaderSize]);
 
-  return <canvas ref={canvasRef} width={4 * invaderSize} height={3 * invaderSize} />;
+  return <canvas ref={canvasRef} width={4 * invaderSize} height={2 * invaderSize} />;
 };
 
 export default SpaceInvader;
