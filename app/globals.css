@@ -27,9 +27,12 @@ body {
   }
 }
 .scrollable::-webkit-scrollbar {
-  width: 12px; /* Width of the scrollbar */
+  width: 8px; /* Width of the scrollbar */
+  background-color: #efefef;
+  border-radius:10px;
 }
 
 .scrollable::-webkit-scrollbar-thumb {
-  background-color: #888; /* Color of the scrollbar thumb */
+  background-color: #bbb; /* Color of the scrollbar thumb */
+  border-radius:10px;
 }

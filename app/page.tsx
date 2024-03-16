@@ -1,16 +1,17 @@
 'use client'
 import { useState, useEffect } from 'react';
 import Image from "next/image";
-import { getProjects } from '../api/getProjects';
+import { getProjects, Project } from '../api/getProjects';
+import Link from 'next/link';
+import SpaceInvader from '@/components/Project/SpaceInvader';
 
 export default function Home() {
-  const [projects, setProjects] = useState([]);
+  const [projects, setProjects] = useState<Project[]>([]);
 
   useEffect(() => {
     async function loadData() {
       const fetchedProjects = await getProjects();
       setProjects(fetchedProjects);
-      console.log(fetchedProjects)
     }
 
     loadData();
@@ -18,16 +19,19 @@ export default function Home() {
 
 
   return (
-    <main className="grid grid-cols-1 md:grid-cols-3 h-screen">
-      <section className="col-span-1 md:col-span-1">
+    <main className="flex flex-col md:flex-row h-screen p-5">
+      <section className="w-full md:w-1/3">
         <h1>Alex Romo</h1>
         <h2>Your Friendly Neighborhood Web-Slinger</h2>
       </section>
-      <section className="col-span-1 md:col-span-2 scrollable overflow-y-scroll h-full">
+      <section className="flex flex-col gap-5 w-full md:w-2/3 scrollable overflow-y-scroll h-full pr-3">
         {projects.map((project) => (
-          <article key={project.id}>
-            <Image src={project.images[0].image.url} width="0" height="0" alt={project.images[0].title} className="w-full h-auto" />
-            <h2>{project.name}</h2>
+          <article key={project.id} className="flex flex-col">
+            <Image src={project.images[0].image.url} width="0" height="0" alt={project.images[0].title} className="w-full h-auto rounded border border-b-4 border-black" />
+            <div className="flex justify-between bg-slate-100 p-5 rounded-b">
+              <h2>{project.name}</h2>
+              <Link href={`/projects/${project.slug}`} className="flex gap-2 items-center">View<SpaceInvader size={5} color="#black" /></Link>
+            </div>
           </article>
         ))}
       </section>
