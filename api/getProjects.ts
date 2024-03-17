@@ -7,8 +7,18 @@ interface Feature {
 interface Image {
   id: string;
   title: string;
-  description: string;
+  description: {
+    html: string;
+  };
   image: {
+    url: string;
+  }
+}
+
+interface Collaborator {
+  name: string;
+  link: string;
+  logo: {
     url: string;
   }
 }
@@ -17,7 +27,10 @@ export interface Project {
   id: string;
   slug: string;
   name: string;
-  description: string;
+  collaborators: Collaborator[];
+  description: {
+    html: string;
+  };
   features: Feature[];
   images: Image[];
 }
@@ -33,7 +46,9 @@ export async function getProjects(): Promise<Project[]> { // Added Promise<Proje
         id
         slug
         name
-        description
+        description {
+          html
+        }
         features {
           id
           name
@@ -58,7 +73,13 @@ export async function getProjectBySlug(slug: string): Promise<Project[] | null> 
         id
         slug
         name
-        description
+        collaborators {
+          name
+          link
+          logo {
+            url
+          }
+        }
         features {
           id
           name
@@ -66,7 +87,9 @@ export async function getProjectBySlug(slug: string): Promise<Project[] | null> 
         images {
           id
           title
-          description
+          description {
+            html
+          }
           image {
             url
           }

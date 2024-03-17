@@ -3,9 +3,16 @@ import React, { useRef, useEffect } from 'react';
 interface SpaceInvaderProps {
   size?: number;
   color?: string;
+  slug: string;
 }
 
-const SpaceInvader: React.FC<SpaceInvaderProps> = ({ size, color }) => {
+const pseudoRandom = (slug: string, index: number) => {
+  const charCode1 = slug.charCodeAt(index % slug.length);
+  const charCode2 = slug.charCodeAt((index + 1) % slug.length);
+  return charCode1 >= charCode2;
+};
+
+const SpaceInvader: React.FC<SpaceInvaderProps> = ({ size, color, slug }) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const invaderSize = size || 20;
   const invaderColor = color || '#000000';
@@ -18,19 +25,26 @@ const SpaceInvader: React.FC<SpaceInvaderProps> = ({ size, color }) => {
     if (!ctx) return;
 
     const drawInvader = () => {
-      // Clear canvas
       ctx.clearRect(0, 0, canvas.width, canvas.height);
-      ctx.fillStyle =  invaderColor;
-      ctx.fillRect(invaderSize * 1, invaderSize * 1, invaderSize, invaderSize);
-      ctx.fillStyle =  'red';
-      ctx.fillRect(invaderSize * 2, invaderSize * 1, invaderSize, invaderSize);
-      // for(let i = 0; i < 6; i++) {
-      //   console.log(ctx.fillStyle)
-      //   for (let j = 0; j < 8; j++) {
-      //     ctx.fillStyle =  Math.random() < 0.5 ? invaderColor : '#ffffff';
-      //     ctx.fillRect(invaderSize * j, invaderSize * i, invaderSize, invaderSize);
-      //   }
-      // }
+      ctx.fillStyle = invaderColor;
+      for(let i = 0; i < 6; i++) {
+        for (let j = 0; j < 8; j++) {
+          const shouldFill = pseudoRandom(slug, i * (11 * invaderSize) + j)
+          if (!(i === 3 && j === 3 || i === 7 && j == 3)) {
+            if (i >= 2 && i <= 8 && j >= 2 && j <= 5) {
+              ctx.fillRect(invaderSize * i, invaderSize * j, invaderSize, invaderSize);
+              if (i !== 5) {
+                ctx.fillRect(invaderSize * (10 - i), invaderSize * j, invaderSize, invaderSize);
+              }
+            } else if (shouldFill) {
+              ctx.fillRect(invaderSize * i, invaderSize * j, invaderSize, invaderSize);
+              if (i !== 5) {
+                ctx.fillRect(invaderSize * (10 - i), invaderSize * j, invaderSize, invaderSize);
+              }
+            }
+          }
+        }
+      }
     };
 
     drawInvader();
