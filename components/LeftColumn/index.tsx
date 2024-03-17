@@ -7,7 +7,7 @@ interface Props {
 
 const LeftColumn = ({ children }: Props) => {
   return (
-    <section className="flex flex-col justify-between w-full md:w-1/3 items-start">
+    <section className="flex flex-col justify-between w-full md:w-2/5 items-start">
       <header>
         <nav className="mb-6 flex flex-col items-start">
           <Link href="/" className="flex gap-2 items-center bg-slate-100/60 hover:bg-slate-100 border rounded-md px-3 py-2">Home</Link>

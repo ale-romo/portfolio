@@ -30,8 +30,7 @@ const Project = ({ slug }: Props) => {
     }
 
     loadData();
-  }, []);
-
+  });
   return <>
     {project && <>
       <LeftColumn>
@@ -51,6 +50,7 @@ const Project = ({ slug }: Props) => {
             <li key={feature.id}>{feature.name}</li>
           ))}
         </ul>
+        {project.link && <Link href={project.link} title={project.name} target="_blank">View Live</Link>}
       </LeftColumn>
       <RightColumn>
         {project.images.map((image) => (

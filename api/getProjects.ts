@@ -28,6 +28,7 @@ export interface Project {
   slug: string;
   name: string;
   collaborators: Collaborator[];
+  link: string;
   description: {
     html: string;
   };
@@ -73,6 +74,10 @@ export async function getProjectBySlug(slug: string): Promise<Project[] | null> 
         id
         slug
         name
+        link
+        description {
+          html
+        }
         collaborators {
           name
           link
