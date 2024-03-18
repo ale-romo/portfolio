@@ -1,6 +1,6 @@
 import React, { useRef, useEffect } from 'react';
 
-interface SpaceInvaderProps {
+interface Props {
   size?: number;
   color?: string;
   slug: string;
@@ -12,7 +12,7 @@ const pseudoRandom = (slug: string, index: number) => {
   return charCode1 >= charCode2;
 };
 
-const SpaceInvader: React.FC<SpaceInvaderProps> = ({ size, color, slug }) => {
+const SpaceInvader = ({ size, color, slug }: Props) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const invaderSize = size || 20;
   const invaderColor = color || '#000000';

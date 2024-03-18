@@ -55,7 +55,7 @@ const Project = ({ slug }: Props) => {
       <RightColumn>
         {project.images.map((image) => (
           <article key={image.title}>
-            <Image src={image.image.url} width="0" height="0" alt={image.title} className="w-full h-auto rounded border border-b-4 border-black" />
+            <Image src={image.image.url} width="0" height="0" alt={image.title} className="w-full h-auto rounded-r border border-l-0 border-b-4 border-black" />
             {image?.description?.html && <Description>
               <span className="flex flex-col gap-5" dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(image.description.html) }} />
             </Description>}

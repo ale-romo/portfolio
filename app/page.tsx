@@ -22,17 +22,17 @@ export default function Home() {
 
 
   return (
-    <main className="flex flex-col md:flex-row h-screen p-5">
+    <main className="flex flex-col md:flex-row h-screen">
       <LeftColumn>
-        Hello
+        xxx
       </LeftColumn>
       <RightColumn>
         {projects.map((project) => (
           <article key={project.id} className="flex flex-col">
-            <Image src={project.images[0].image.url} width="0" height="0" alt={project.images[0].title} className="w-full h-auto rounded border border-b-4 border-black" />
+            <Image src={project.images[0].image.url} width="0" height="0" alt={project.images[0].title} className="w-full h-auto rounded-r border border-l-0 border-b-4 border-black" />
             <Description>
-              <h2>{project.name}</h2>
-              <Link href={`/projects/${project.slug}`} className="flex gap-2 items-center bg-white/60 hover:bg-white border rounded-md px-3 py-2"><SpaceInvader size={2} color="black" slug={project.slug} />View</Link>
+              <h3 className="text-xl">{project.name}</h3>
+              <Link href={`/projects/${project.slug}`} className="flex gap-2 font-heading items-center bg-slate-100/60 hover:bg-white border rounded-md px-3 py-2"><SpaceInvader size={2} color="black" slug={project.slug} />Explore</Link>
             </Description>
           </article>
         ))}

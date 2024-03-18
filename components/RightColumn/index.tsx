@@ -6,9 +6,12 @@ interface Props {
 
 const RightColumn = ({ children }: Props) => {
   return (
-    <section className="flex flex-col gap-5 w-full md:w-3/5 scrollable overflow-y-scroll h-full pr-3">
+    <div className="p-5 pr-2 pl-0 w-full md:w-3/5">
+      <section className="flex flex-col gap-10 w-full scrollable overflow-y-scroll h-full pr-3">
       {children}
     </section>
+    </div>
+
   );
 };
 
