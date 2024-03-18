@@ -23,11 +23,20 @@ interface Collaborator {
   }
 }
 
+interface Technology {
+  name: string;
+  link: string;
+  logo: {
+    url: string
+  }
+}
+
 export interface Project {
   id: string;
   slug: string;
   name: string;
   collaborators: Collaborator[];
+  technologies: Technology[];
   link: string;
   description: {
     html: string;
@@ -53,6 +62,12 @@ export async function getProjects(): Promise<Project[]> { // Added Promise<Proje
         features {
           id
           name
+        }
+        technologies {
+          name
+          logo {
+            url
+          }
         }
         images {
           id
@@ -88,6 +103,12 @@ export async function getProjectBySlug(slug: string): Promise<Project[] | null> 
         features {
           id
           name
+        }
+        technologies {
+          name
+          logo {
+            url
+          }
         }
         images {
           id

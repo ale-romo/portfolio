@@ -32,7 +32,7 @@ export default function Home() {
             <Image src={project.images[0].image.url} width="0" height="0" alt={project.images[0].title} className="w-full h-auto rounded-r border border-l-0 border-b-4 border-black" />
             <Description>
               <h3 className="text-xl">{project.name}</h3>
-              <Link href={`/projects/${project.slug}`} className="flex gap-2 font-heading items-center bg-slate-100/60 hover:bg-white border rounded-md px-3 py-2"><SpaceInvader size={2} color="black" slug={project.slug} />Explore</Link>
+              <Link href={`/projects/${project.slug}`} className="space-btn"><SpaceInvader size={2} color="black" slug={project.slug} />Explore</Link>
             </Description>
           </article>
         ))}
