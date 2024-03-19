@@ -1,10 +1,10 @@
 import { GraphQLClient } from 'graphql-request';
 
-interface Feature {
+export interface Feature {
   id: string;
   name: string;
 }
-interface Image {
+export interface Image {
   id: string;
   title: string;
   description: {
@@ -15,7 +15,7 @@ interface Image {
   }
 }
 
-interface Collaborator {
+export interface Collaborator {
   name: string;
   link: string;
   logo: {
@@ -23,7 +23,7 @@ interface Collaborator {
   }
 }
 
-interface Technology {
+export interface Technology {
   name: string;
   link: string;
   logo: {
@@ -65,6 +65,7 @@ export async function getProjects(): Promise<Project[]> { // Added Promise<Proje
         }
         technologies {
           name
+          link
           logo {
             url
           }
@@ -106,6 +107,7 @@ export async function getProjectBySlug(slug: string): Promise<Project[] | null> 
         }
         technologies {
           name
+          link
           logo {
             url
           }
@@ -126,4 +128,46 @@ export async function getProjectBySlug(slug: string): Promise<Project[] | null> 
   );
 
   return projects;
+}
+
+export async function getFeatures(): Promise<Feature[]> {
+  const { features }: { features: Feature[] }  = await hygraph.request( // Corrected the type of projects
+    `query GetFeatures {
+      features {
+        id
+        name
+      }
+    }`
+  )
+  return features;
+}
+
+export async function getTechnologies(): Promise<Technology[]> {
+  const { technologies }: { technologies: Technology[] }  = await hygraph.request( // Corrected the type of projects
+    `query GetTechnologies {
+      technologies (first: 50) {
+        name
+        link
+        logo {
+          url
+        }
+      }
+    }`
+  )
+  return technologies;
+}
+
+export async function getCollaborators(): Promise<Collaborator[]> {
+  const { collaborators }: { collaborators: Collaborator[] }  = await hygraph.request( // Corrected the type of projects
+    `query GetCollaborators {
+      collaborators {
+        name
+        link
+        logo {
+          url
+        }
+      }
+    }`
+  )
+  return collaborators;
 }

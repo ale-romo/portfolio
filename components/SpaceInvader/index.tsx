@@ -29,7 +29,7 @@ const SpaceInvader = ({ size, color, slug }: Props) => {
       ctx.fillStyle = invaderColor;
       for(let i = 0; i < 6; i++) {
         for (let j = 0; j < 8; j++) {
-          const shouldFill = pseudoRandom(slug, i * (11 * invaderSize) + j)
+          const shouldFill = pseudoRandom(slug, i * (10) + j)
           if (!(i === 3 && j === 3 || i === 7 && j == 3)) {
             if (i >= 2 && i <= 8 && j >= 2 && j <= 5) {
               ctx.fillRect(invaderSize * i, invaderSize * j, invaderSize, invaderSize);
@@ -48,7 +48,7 @@ const SpaceInvader = ({ size, color, slug }: Props) => {
     };
 
     drawInvader();
-  }, [canvasRef, invaderColor, invaderSize]);
+  }, []);
 
   return <canvas ref={canvasRef} width={11 * invaderSize} height={8 * invaderSize} />;
 };
