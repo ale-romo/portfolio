@@ -2,13 +2,14 @@
 import {useState, useEffect } from 'react';
 import Image from 'next/image';
 import DOMPurify from 'dompurify';
-import { getProjectBySlug, Project as ProjectType } from '@/api/getProjects';
+import { getProjectBySlug, getProjects, Project as ProjectType } from '@/api/getProjects';
 import LeftColumn from '@/components/LeftColumn';
 import RightColumn from '@/components/RightColumn';
 import Description from '../Description';
 import Link from 'next/link';
 import SpaceInvader from '../SpaceInvader';
 import Technologies from '../Technologies';
+import Nav from '../Nav';
 
 interface  Props {
   slug: string;
@@ -16,11 +17,17 @@ interface  Props {
 
 const Project = ({ slug }: Props) => {
   const [project, setProject] = useState<ProjectType | null>(null);
+  const [projects, setProjects] = useState<ProjectType[]>([]);
+
 
   useEffect(() => {
     async function loadData() {
       try {
+        const fetchedProjects = await getProjects();
         const fetchedProject = await getProjectBySlug(slug);
+        if (fetchedProject) {
+          setProjects(fetchedProjects);
+        }
         if (fetchedProject) {
           setProject(fetchedProject[0]);
         } else {
@@ -34,9 +41,12 @@ const Project = ({ slug }: Props) => {
     loadData();
   }, []);
 
+  const getProjectNavItems = (projects: ProjectType[]) => projects.map(project => {return { name: project.name, slug:project.slug, active: project.active }});
+
   return <>
     {project && <>
       <LeftColumn>
+        <Nav items={getProjectNavItems(projects)} />
         <article className="flex flex-col gap-8 border border-r-0 border-b-2 border-black rounded bg-white p-4 rounded-r-none">
           <div className="flex flex-col gap-4">
             <div className="flex justify-between">
