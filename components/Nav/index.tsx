@@ -17,7 +17,7 @@ const [showProjectMenu, setShowProjectMenu] = useState(false);
       <button onClick={() => setShowProjectMenu(!showProjectMenu)} className="flex gap-2 text-xs font-heading justify-center grow items-center bg-slate-100/60 hover:bg-slate-100 border border-gray-400 px-2 border-b-2 py-1"><SpaceInvader slug="the-sandman" size={2} />Projects</button>
       {showProjectMenu && <ul className="absolute w-full top-full left-0 flex bg-white border border-gray-400 border-b-2 gap-y-4 p-4 flex-wrap mt-2 shadow-xl pt-10">
           <button onClick={() => setShowProjectMenu(!showProjectMenu)} className="absolute top-0 right-2 p-2 hover:text-red-400 text-xl">&times;</button>
-          {items.map((project: Props) => <li key={`submenu-${project.slug}`} className="flex w-1/2 relative hover:text-red-400">
+          {items.map((project: Item) => <li key={`submenu-${project.slug}`} className="flex w-1/2 relative hover:text-red-400">
 
             <Link
               href={`/projects/${project.slug}`}

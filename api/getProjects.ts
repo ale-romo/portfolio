@@ -36,6 +36,7 @@ export interface Project {
   slug: string;
   name: string;
   active: boolean;
+  launchDate: string;
   collaborators: Collaborator[];
   technologies: Technology[];
   link: string;
@@ -57,6 +58,7 @@ export async function getProjects(): Promise<Project[]> { // Added Promise<Proje
         id
         slug
         name
+        launchDate
         active
         description {
           html

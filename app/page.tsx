@@ -12,6 +12,7 @@ import Collaborators from '@/components/Collaborators';
 import Features from '@/components/Features';
 import Logo from '@/components/Logo';
 import Nav from '@/components/Nav';
+import sortProjects from '@/utils/sortProjects';
 
 export default function Home() {
   const [projects, setProjects] = useState<Project[]>([]);
@@ -22,12 +23,12 @@ export default function Home() {
   useEffect(() => {
     async function loadData() {
       try {
-        const fetchedProject = await getProjects();
+        const fetchedProjects = await getProjects();
         const fetchedTechnologies = await getTechnologies();
         const fetchedCollaborators = await getCollaborators();
         const fetchedFeatures = await getFeatures();
-        if (fetchedProject) {
-          setProjects(fetchedProject);
+        if (fetchedProjects) {
+          setProjects(sortProjects(fetchedProjects));
         }
         if (fetchedTechnologies) {
           setTechnologies(fetchedTechnologies);
