@@ -62,7 +62,7 @@ export default function Home() {
               <div className="flex gap-3 items-center border-b border-gray-400 w-full pb-5">
                 <span className="bg-black rounded-md p-2"><Logo size={4} /></span>
                 <div>
-                  <h1 className="text-xl">Alex Romo</h1>
+                  <h1 className="text-xl">Alex Romo&apos;s Dev Shop</h1>
                   <p className="text-sky-600">Your Friendly Neighborhood Web-Slinger</p>
                 </div>
               </div>
@@ -100,7 +100,7 @@ export default function Home() {
       </RightColumn>
       {showBanner && <div className="fixed -top-8 -right-32 text-black  font-heading" style={{ width: '500px', height: '300px' }}>
         <h2 className="absolute flex top-1/2 left-1/2 -translate-x-1/2 rotate-45 -translate-y-1/2 gap-4 items-center justify-center w-full py-3 text-center bg-yellow-400 shadow-2xl border-dashed border-4 border-black">
-          Seguimos construyendo<button className=" border-2 border-b-4 border-black px-2 hover:bg-yellow-300/70" onClick={() => setShowBanner(false)}>Ok</button>
+          Siempre en construcción<button className=" border-2 border-b-4 border-black px-2 hover:bg-yellow-300/70" onClick={() => setShowBanner(false)}>Ok</button>
         </h2>
       </div>}
     </main>
