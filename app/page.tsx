@@ -75,11 +75,16 @@ export default function Home() {
                   Enfocado en crear experiencias digitales únicas que cautivan a los usuarios y generan impacto. A través de su dominio de los últimos frameworks y tecnologías, Alex construye sitios web de alto rendimiento que reflejan la visión y los objetivos de sus clientes.
                 </p>
               </div>
-              <Technologies technologies={technologies} />
-              <Collaborators collaborators={collaborators} />
-
           </Description>
         </article>
+        <div className="flex flex-col gap-2 md:pr-5">
+          <h4 className="text-xs text-gray-500 w-full">Tecnologías:</h4>
+          <Technologies technologies={technologies} />
+        </div>
+        <div className="flex flex-col gap-2 md:pr-5">
+          <h4 className="text-xs text-gray-500 w-full">Colaboradores:</h4>
+          <Collaborators collaborators={collaborators} />
+        </div>
       </LeftColumn>
       <RightColumn>
         <h2 className="w-full text-center text-xl flex gap-4 justify-center items-center"><SpaceInvader size={3} slug="the-sandman" />Casos de Estudio</h2>
