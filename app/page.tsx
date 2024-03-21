@@ -84,7 +84,7 @@ export default function Home() {
       <RightColumn>
         <h2 className="w-full text-center text-xl flex gap-4 justify-center items-center"><SpaceInvader size={3} slug="the-sandman" />Casos de Estudio</h2>
         {projects.map((project) => (
-          <article key={project.id} className={`flex flex-col ${!project.active ? 'opacity-40' : 'opacity-100'}`}>
+          <article key={project.id} className={`flex gap-4 flex-col ${!project.active ? 'opacity-40' : 'opacity-100'}`}>
             <Image src={project.images[0].image.url} width="0" height="0" alt={project.images[0].title} className="w-full h-auto rounded md:rounded-l-none border md:border-l-0 border-b-4 border-black" />
             <Description>
               <div className="flex justify-between items-center w-full pl-5">
