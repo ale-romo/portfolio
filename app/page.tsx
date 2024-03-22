@@ -87,7 +87,7 @@ export default function Home() {
         </div>
       </LeftColumn>
       <RightColumn>
-        <h2 className="w-full text-center text-xl flex gap-4 justify-center items-center"><SpaceInvader size={3} slug="the-sandman" />Casos de Estudio</h2>
+        <h2 className="w-full text-center text-xl flex gap-4 justify-center items-center"><SpaceInvader size={3} slug="the-sandman" />Study Cases</h2>
         {projects.map((project) => (
           <article key={project.id} className={`flex gap-4 flex-col ${!project.active ? 'opacity-40' : 'opacity-100'}`}>
             <Image src={project.images[0].image.url} width="0" height="0" alt={project.images[0].title} className="w-full h-auto rounded md:rounded-l-none border md:border-l-0 border-b-4 border-black" />
@@ -103,9 +103,9 @@ export default function Home() {
           </article>
         ))}
       </RightColumn>
-      {showBanner && <div className="fixed -top-8 -right-32 text-black  font-heading" style={{ width: '500px', height: '300px' }}>
+      {showBanner && <div className="fixed -top-5 -right-28 text-black  font-heading" style={{ width: '500px', height: '300px' }}>
         <h2 className="absolute flex top-1/2 left-1/2 -translate-x-1/2 rotate-45 -translate-y-1/2 gap-4 items-center justify-center w-full py-3 text-center bg-yellow-400 shadow-2xl border-dashed border-4 border-black">
-          Siempre en construcción<button className=" border-2 border-b-4 border-black px-2 hover:bg-yellow-300/70" onClick={() => setShowBanner(false)}>Ok</button>
+          Under continuous construction<button className=" border-2 border-b-4 border-black px-2 hover:bg-yellow-300/70" onClick={() => setShowBanner(false)}>Ok</button>
         </h2>
       </div>}
     </main>

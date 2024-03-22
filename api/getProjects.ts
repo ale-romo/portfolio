@@ -47,7 +47,11 @@ export interface Project {
   images: Image[];
 }
 
-const hygraph: GraphQLClient = new GraphQLClient('https://api-us-west-2.hygraph.com/v2/cltr0i2b8014b08w0ntocxyh7/master');
+if (!process.env.NEXT_PUBLIC_HYGRAPH_URL) {
+  throw new Error('NEXT_PUBLIC_HYGRAPH_URL environment variable is not defined');
+}
+
+const hygraph: GraphQLClient = new GraphQLClient(process.env.NEXT_PUBLIC_HYGRAPH_URL);
 
 export async function getProjects(): Promise<Project[]> { // Added Promise<Project[]> return type
 
