@@ -69,20 +69,20 @@ export default function Home() {
               <Features features={features} />
               <div className="flex flex-col flex-1 gap-5 md:pr-3 scrollable md:overflow-y-scroll">
                 <p>
-                  Un apasionado desarrollador web con una sólida formación en diseño y una amplia experiencia en el desarrollo de proyectos digitales. Con una carrera que abarca desde la enseñanza hasta el emprendimiento, Alex se destaca por su capacidad para combinar habilidades técnicas con una visión creativa.
+                  A dedicated web developer with a robust foundation in design, engineering, and substantial experience in delivering digital projects. With a career trajectory ranging from engineering roles in prominent companies to entrepreneurial ventures, Alex excels in merging technical prowess with creative ingenuity.
                 </p>
                 <p>
-                  Enfocado en crear experiencias digitales únicas que cautivan a los usuarios y generan impacto. A través de su dominio de los últimos frameworks y tecnologías, Alex construye sitios web de alto rendimiento que reflejan la visión y los objetivos de sus clientes.
+                  Specializing in crafting distinctive digital experiences that captivate users and leave a lasting impression. Leveraging expertise in cutting-edge frameworks and technologies, Alex develops high-performance websites that impeccably align with the objectives and aspirations of his clients.
                 </p>
               </div>
           </Description>
         </article>
         <div className="flex flex-col gap-2 md:pr-5">
-          <h4 className="text-xs text-gray-500 w-full">Tecnologías:</h4>
+          <h4 className="text-xs text-gray-500 w-full">Tech:</h4>
           <Technologies technologies={technologies} />
         </div>
         <div className="flex flex-col gap-2 md:pr-5">
-          <h4 className="text-xs text-gray-500 w-full">Colaboradores:</h4>
+          <h4 className="text-xs text-gray-500 w-full">Collaborators:</h4>
           <Collaborators collaborators={collaborators} />
         </div>
       </LeftColumn>

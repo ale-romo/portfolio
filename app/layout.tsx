@@ -28,9 +28,6 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <Head>
-        <link rel="icon" href="?<generated>" type="image/png" sizes="32x32" />
-      </Head>
       <body className={`${headingFont.variable} ${contentFont.variable}`}>{children}</body>
     </html>
   );
