@@ -13,7 +13,6 @@ import Features from '@/components/Features';
 import Logo from '@/components/Logo';
 import Nav from '@/components/Nav';
 import sortProjects from '@/utils/sortProjects';
-import ContactCard from '@/components/ContactCard';
 
 export default function Home() {
   const [projects, setProjects] = useState<Project[]>([]);
@@ -55,7 +54,6 @@ export default function Home() {
   return (<>
     <main className="flex flex-col md:flex-row h-screen md:max-h-full md:overflow-hidden">
       <LeftColumn>
-        <ContactCard />
         <Nav items={getProjectNavItems(projects)} />
         <article className="flex flex-1 overflow-hidden flex-col gap-8 border md:border-r-0 border-b-2 border-black rounded bg-white p-4 md:rounded-r-none">
           <Description>
