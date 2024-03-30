@@ -10,6 +10,8 @@ import Link from 'next/link';
 import SpaceInvader from '../SpaceInvader';
 import Technologies from '../Technologies';
 import Nav from '../Nav';
+import sortProjects from '@/utils/sortProjects';
+import Collaborators from '../Collaborators';
 
 interface  Props {
   slug: string;
@@ -26,7 +28,7 @@ const Project = ({ slug }: Props) => {
         const fetchedProjects = await getProjects();
         const fetchedProject = await getProjectBySlug(slug);
         if (fetchedProject) {
-          setProjects(fetchedProjects);
+          setProjects(sortProjects(fetchedProjects));
         }
         if (fetchedProject) {
           setProject(fetchedProject[0]);
@@ -58,29 +60,25 @@ const Project = ({ slug }: Props) => {
             {project.features.map((feature) => (
               <li key={feature.id} className="px-2 py-1 bg-slate-300/50 rounded text-sm flex items-center">{feature.name}</li>
             ))}
-            <Technologies technologies={project.technologies} />
           </ul>
           <p className="text-lg" dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(project.description.html) }}/>
-          <div className="flex items-center gap-4">
-            <h3 className="text-sm text-center">Colaboración:</h3>
-            <ul className="flex gap-4 items-stretch">
-              {project.collaborators.map((collaborator) => (
-                <li key={collaborator.name} className="space-btn">
-                  <Link href={collaborator.link} title={collaborator.name} target="_blank" className="flex justify-center">
-                    <Image width="0" height="0" className="w-2/3 h-auto" src={collaborator.logo.url} alt={collaborator.name} />
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
         </article>
+        <div className="flex flex-col gap-2 md:pr-5">
+          <h4 className="text-xs text-gray-500 w-full">Tech:</h4>
+          <Technologies technologies={project.technologies} />
+        </div>
+        {!!project.collaborators.length &&
+        <div className="flex flex-col gap-2 md:pr-5">
+          <h4 className="text-xs text-gray-500 w-full">Collaborators:</h4>
+          <Collaborators collaborators={project.collaborators} />
+        </div>}
       </LeftColumn>
       <RightColumn>
-        {project.images.map((image) => (
-          <article key={image.title}>
-            <Image src={image.image.url} width="0" height="0" alt={image.title} className="w-full h-auto rounded-r border border-l-0 border-b-4 border-black" />
+        {project.images.map((image, i) => (
+          <article key={image.title} className="">
+            <Image src={image.image.url} width="0" height="0" alt={image.title} className={`w-full h-auto rounded-r border border-b-4 border-black`} />
             {image?.description?.html && <Description>
-              <span className="flex flex-col gap-5" dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(image.description.html) }} />
+              <span className="flex flex-col gap-5 smart-text px-5 pt-5" dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(image.description.html) }} />
             </Description>}
           </article>
         ))}
