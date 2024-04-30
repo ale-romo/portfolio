@@ -50,7 +50,7 @@ export default function Home() {
   }, []);
 
   const getProjectNavItems = (projects: Project[]) => projects.map(project => {return { name: project.name, slug:project.slug, active: project.active }});
-
+  console.log(projects)
   return (<>
     <main className="flex flex-col md:flex-row h-screen md:max-h-full md:overflow-hidden">
       <LeftColumn>
