@@ -19,7 +19,7 @@ export default function Home() {
   const [technologies, setTechnologies] = useState<Technology[]>([]);
   const [collaborators, setCollaborators] = useState<Collaborator[]>([]);
   const [features, setFeatures] = useState<Feature[]>([]);
-  const [showBanner, setShowBanner] = useState(true);
+  const [showBanner, setShowBanner] = useState(false);
 
   useEffect(() => {
     async function loadData() {
@@ -57,8 +57,8 @@ export default function Home() {
         <Nav items={getProjectNavItems(projects)} />
         <article className="flex flex-1 overflow-hidden flex-col gap-8 border md:border-r-0 border-b-2 border-black rounded bg-white p-4 md:rounded-r-none">
           <Description>
-              <div className="flex gap-3 items-center border-b border-gray-400 w-full pb-5">
-                <span className="bg-black rounded-md p-2"><Logo size={4} /></span>
+              <div className="flex gap-3 items-center border-b border-[#b5179e] w-full">
+                <span className=""><Logo size={6} /></span>
                 <div>
                   <h1 className="text-xl">Alex Romo&apos;s Dev Shop</h1>
                   <p className="text-sky-600">Your Friendly Neighborhood Web-Slinger</p>
@@ -67,20 +67,17 @@ export default function Home() {
               <Features features={features} />
               <div className="flex flex-col flex-1 gap-5 md:pr-3 scrollable md:overflow-y-scroll">
                 <p>
-                  A dedicated web developer with a robust foundation in design, engineering, and substantial experience in delivering digital projects. With a career trajectory ranging from engineering roles in prominent companies to entrepreneurial ventures, Alex excels in merging technical prowess with creative ingenuity.
-                </p>
-                <p>
-                  Specializing in crafting distinctive digital experiences that captivate users and leave a lasting impression. Leveraging expertise in cutting-edge frameworks and technologies, Alex develops high-performance websites that impeccably align with the objectives and aspirations of his clients.
+                  Front-End Engineer with a proven track record in both large-scale corporate enterprises and fast-paced marketing environments. Skilled in navigating the complexities of diverse business landscapes, I thrive in delivering innovative solutions that exceed expectations.
                 </p>
               </div>
           </Description>
         </article>
         <div className="flex flex-col gap-2 md:pr-5">
-          <h4 className="text-xs text-gray-500 w-full">Tech:</h4>
+          <h4 className="text-xs text-gray-500 w-full">Tech & Software:</h4>
           <Technologies technologies={technologies} />
         </div>
         <div className="flex flex-col gap-2 md:pr-5">
-          <h4 className="text-xs text-gray-500 w-full">Collaborators:</h4>
+          <h4 className="text-xs text-gray-500 w-full">Partners:</h4>
           <Collaborators collaborators={collaborators} />
         </div>
       </LeftColumn>

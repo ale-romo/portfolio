@@ -17,7 +17,7 @@ const contentFont = TextFont({
 });
 
 export const metadata: Metadata = {
-  title: "Alex Romo's Dev Shop",
+  title: "Hi, I'm Alex Romo",
   description: "Your friendly neighborhood Web-Slinger",
 };
 
