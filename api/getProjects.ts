@@ -58,7 +58,7 @@ export async function getProjects(): Promise<Project[]> { // Added Promise<Proje
 
   const { projects }: { projects: Project[] }  = await hygraph.request( // Corrected the type of projects
     `query GetProjects {
-      projects {
+      projects(orderBy: launchDate_DESC) {
         id
         slug
         name

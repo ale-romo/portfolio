@@ -12,7 +12,6 @@ import Collaborators from '@/components/Collaborators';
 import Features from '@/components/Features';
 import Logo from '@/components/Logo';
 import Nav from '@/components/Nav';
-import sortProjects from '@/utils/sortProjects';
 
 export default function Home() {
   const [projects, setProjects] = useState<Project[]>([]);
@@ -29,7 +28,7 @@ export default function Home() {
         const fetchedCollaborators = await getCollaborators();
         const fetchedFeatures = await getFeatures();
         if (fetchedProjects) {
-          setProjects(sortProjects(fetchedProjects));
+          setProjects(fetchedProjects);
         }
         if (fetchedTechnologies) {
           setTechnologies(fetchedTechnologies);
